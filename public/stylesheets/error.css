@@ -1,0 +1,33 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font: 16px "Source Sans Pro", "Open Sans", "Helvetica Neue", sans-serif;
+  background: #7BDCF5 url(../images/play.png) -200px -80% no-repeat;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-size-adjust: none;
+}
+
+#container {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  margin: auto;
+  width: 500px;
+  display: table;
+  height: auto;
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+h1 {
+  font-weight: 900;
+  text-align: center;
+}
+img {
+  vertical-align: -16px;
+  margin-right: 10px;
+}
+
+p.error {
+  font-size: 20px;
+}

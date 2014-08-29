@@ -1,0 +1,65 @@
+@(title: String)(head: Html)(content: Html)(implicit session: Session)
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>@title</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+
+  <!-- CSS -->
+  <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/font-awesome/css/font-awesome.min.css")" >
+  <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/bootstrap/css/bootstrap.min.css")">
+  <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.min.css")">
+
+  <!-- Javascript -->
+  <script src="@routes.Assets.versioned("lib/jquery/jquery.min.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.versioned("lib/bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+  <script src="/assets/lib/react/react.js" type="text/javascript"></script>
+  @*<script src="@routes.Assets.versioned("lib/react/react.js")" type="text/javascript"></script>*@
+  <script src="@routes.Assets.versioned("lib/react/JSXTransformer.js")" type="text/javascript"></script>
+
+  <!-- ReactJS -->
+  @session.get("uid").map { uid =>
+    <script type="text/jsx" src="@routes.Assets.versioned("javascripts/search.js")"></script>
+  }
+
+  @head
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Playbook</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        @session.get("uid").map { uid =>
+          <li><a href="#" data-toggle="modal" data-target="#newPost"><i class="glyphicon glyphicon-pencil"></i></a></li>
+          <li id="search">
+          </li>
+          <li class="dropdown">
+            <a href="#" id="dropdown-profile" role="button" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="glyphicon glyphicon-user"></i> @uid <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-profile">
+              <li role="presentation">
+                <a href="@routes.Authentication.logout()" role="menuitem" tabindex="-1"><i class="fa fa-sign-out"></i> Logout</a>
+              </li>
+            </ul>
+          </li>
+          @newPost()
+        }
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="container">
+  @content
+</div>
+</body>
+</html>

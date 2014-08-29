@@ -1,0 +1,12 @@
+{
+  "globalstrict": true,
+  "sub": true,
+  "predef": [
+    "require",
+    "requirejs",
+    "define",
+    "angular",
+    "setInterval",
+    "EventSource",
+    "console" ]
+}

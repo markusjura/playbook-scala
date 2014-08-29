@@ -1,0 +1,13 @@
+@(loginForm: Form[LoginData])(implicit session: Session)
+
+@main("Playbook - Login") {
+  @* Header *@
+  <script type="text/javascript">
+    var uid = "@loginForm("uid").value";
+    var password = "@loginForm("password").value";
+    var globalError = "@loginForm.globalError.map(error => Html(error.message))";
+  </script>
+  <script type="text/jsx" src="@routes.Assets.versioned("javascripts/login.js")"></script>
+} {
+  <div id="login-form"></div>
+}

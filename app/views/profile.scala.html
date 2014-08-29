@@ -1,0 +1,10 @@
+@(uid: String)(implicit session: Session)
+
+@main("Playbook - " + uid) {
+  @* Header *@
+  <script type="text/jsx" src="@routes.Assets.versioned("javascripts/post.js")"></script>
+  <script type="text/jsx" src="@routes.Assets.versioned("javascripts/profile.js")"></script>
+} {
+  <div id="uid" style="display: none;">@uid</div>
+  <div id="post-wrapper" class="center-block"></div>
+}

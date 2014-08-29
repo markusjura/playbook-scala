@@ -1,0 +1,9 @@
+@()(implicit session: Session)
+
+@main("Playbook - Dashboard") {
+  @* Header *@
+  <script type="text/jsx" src="@routes.Assets.versioned("javascripts/post.js")"></script>
+  <script type="text/jsx" src="@routes.Assets.versioned("javascripts/dashboard.js")"></script>
+} {
+  <div id="post-wrapper" class="center-block"></div>
+}
